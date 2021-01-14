@@ -30,12 +30,12 @@ switch flag_symbolic_value
         
     case 'value-light'
         out.L = [0; 0.4; 0.4];
-        out.m = [10; 2; 1];
+        out.m = [1; 2; 2];
         out.I = [0.5^2/6; 0.4^2/12; 0.4^2/12].*out.m;
         
     case 'value-heavy'
         out.L = [0; 0.4; 0.4];
-        out.m = [5; 4; 4];
+        out.m = [5; 2; 2];
         out.I = [0.5^2/6; 0.4^2/12; 0.4^2/12].*out.m;
         
     otherwise 
