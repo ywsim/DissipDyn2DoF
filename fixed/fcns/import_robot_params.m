@@ -3,9 +3,7 @@ function out = import_robot_params(flag_symbolic_value)
 
 switch flag_symbolic_value
     case 'symbolic'
-        syms qx qy real
-        syms qdx qdy real
-        syms L I m q qd [3 1 ] real
+        syms L I m q qd [2 1 ] real
         syms p pd n_bwd n_fwd [2 1] real
         syms Irot N [2 1] real
         
@@ -13,13 +11,13 @@ switch flag_symbolic_value
         out.m = m;
         out.I = I;
         
-        out.q =  [qx; qy; q];
-        out.qd = [qdx; qdy; qd];
-        out.rq = [out.q;p];
-        out.rqd= [out.qd;pd];
+        out.q =  q;
+        out.qd = qd;
+        out.rq = [q;p];
+        out.rqd= [qd;pd];
         
-        out.p =  [p];
-        out.pd = [pd];
+        out.p =  p;
+        out.pd = pd;
         
         out.N = N;
         out.Irot = Irot;
@@ -29,14 +27,14 @@ switch flag_symbolic_value
         out.eff = [n_bwd;n_fwd];
         
     case 'value-light'
-        out.L = [0; 0.4; 0.4];
-        out.m = [1; 2; 2];
-        out.I = [0.5^2/6; 0.4^2/12; 0.4^2/12].*out.m;
+        out.L = [0.4; 0.4];
+        out.m = [2; 2];
+        out.I = [0.4^2/12; 0.4^2/12].*out.m;
         
     case 'value-heavy'
-        out.L = [0; 0.4; 0.4];
-        out.m = [5; 2; 2];
-        out.I = [0.5^2/6; 0.4^2/12; 0.4^2/12].*out.m;
+        out.L = [0.4; 0.4];
+        out.m = [2; 2];
+        out.I = [0.4^2/12; 0.4^2/12].*out.m;
         
     otherwise 
         disp('Unknown method.')

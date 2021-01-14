@@ -1,8 +1,8 @@
 function robot = gen_contact(robot, flagWriteFcn)
 params_ = import_robot_params('symbolic');
 
-robot.contactBodyNum = 5;
-robot.contactPos = [params_.L(3) 0 0];
+robot.contactBodyNum = 2;
+robot.contactPos = [params_.L(2) 0 0];
 
 jaco_xyz = contactJaco(robot, params_.rq, params_.rqd, robot.flagFloat, robot.contactBodyNum, robot.contactPos);
 jaco_contact_redundant = simplify(jaco_xyz(1:2, :));

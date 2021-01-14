@@ -1,9 +1,10 @@
 %% Init
+addpath(genpath(pwd))
 clear; clc; close all;
 flagWriteFcn = true;
 
 %% Generate Rigid Body System
-robot = gen_floating_leg_reflected();
+robot = gen_fixed_leg_reflected();
 
 %% Generate Contact Jacobian
 robot = gen_contact(robot, flagWriteFcn);

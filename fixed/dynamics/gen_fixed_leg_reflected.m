@@ -1,48 +1,43 @@
-function robot = gen_floating_leg_reflected()
+function robot = gen_fixed_leg_reflected()
 %% Init
 addpath(genpath(pwd))
 clear;clc;
 
 robot.name = '2 DOF 2-Link Planar Monoped';
-robot.base = 'floating';
+robot.base = 'fixed';
 robot.dimensions = 'planar';
 robot.flagFloat = false;
 robot.transmission = 'ser';
 
-robot.parent = [0 1 2 3 4 3 4 ];  
+robot.parent = [0 1 0 1 ];  
 
-robot.nBase = 3;
+robot.nBase = 0;
 robot.nLimbs = 2;
 robot.nTransmission = 2;
 robot.nd = (robot.nBase + robot.nLimbs + robot.nTransmission);% number of DoF
-
-robot.nd = 7;           
 robot.NB = robot.nd;    % number of body
 
 %% Import Params
 params_ = import_robot_params('symbolic');
 
 %% Rigid Body Params
-mass_ = [0; 0; params_.m; 0; 0];
+mass_ = [params_.m; 0; 0];
 
-com_ = [    zeros(3,3);
-            params_.L(2)/2 0 0;
-            params_.L(3)/2 0 0
+com_ = [    params_.L(1)/2 0 0;
+            params_.L(2)/2 0 0
             zeros(2,3)];
 
-iner_ = [   zeros(2,3);
-            0 0 params_.I(1);
+iner_ = [   0 0 params_.I(1);
             0 0 params_.I(2);
-            0 0 params_.I(3);
             0 0 params_.Irot(1);
             0 0 params_.Irot(2);];
      
-jtype_ = {'Px', 'Py', 'Rz', 'Rz','Rz', 'Rz', 'Rz'};
+jtype_ = {'Rz','Rz', 'Rz', 'Rz'};
 
-jpos_ = [   zeros(4,3);
-            params_.L(2) 0 0;
+jpos_ = [   zeros(1,3);
+            params_.L(1) 0 0;
             zeros(1,3);
-            params_.L(2) 0 0];
+            params_.L(1) 0 0];
             
 
 %% Rigid Body mass, I, Xtree
