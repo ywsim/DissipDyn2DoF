@@ -1,6 +1,6 @@
 function Z = calcAGIE(q_, L_, m_, I_, gear_, eff_, scenario, drive)
 J_ = fcn_Jaco_Contact(q_, L_);
-
+% disp(scenario)
 switch scenario
     case 'bwd'
         switch drive
