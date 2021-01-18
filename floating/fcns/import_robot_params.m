@@ -29,12 +29,12 @@ switch flag_symbolic_value
         out.eff = [n_bwd;n_fwd];
         
     case 'value-light'
-        out.L = [0; 0.4; 0.4];
-        out.m = [1; 2; 2];
-        out.I = [0.5^2/6; 0.4^2/12; 0.4^2/12].*out.m;
+        out.L = [0.5; 0.4; 0.4];
+        out.m = [15; 2; 2];
+        out.I = [out.m(1)*out.L(1)^2/4; 0.4^2/12; 0.4^2/12].*out.m;
         
     case 'value-heavy'
-        out.L = [0; 0.4; 0.4];
+        out.L = [0.5; 0.4; 0.4];
         out.m = [5; 2; 2];
         out.I = [0.5^2/6; 0.4^2/12; 0.4^2/12].*out.m;
         
