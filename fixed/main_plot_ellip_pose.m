@@ -13,7 +13,7 @@ load_dyn = load('robot_dynamics.mat');  % from gen_Fixed_leg.m
 robot_dyn = load_dyn.robot;
 
 % Import Numerical Values of L, m, I
-params_value = import_robot_params('value-light');
+params_value = import_robot_params('value');
 L = params_value.L;
 m = params_value.m;
 I = params_value.I;

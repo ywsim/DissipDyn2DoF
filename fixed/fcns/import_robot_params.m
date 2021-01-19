@@ -26,15 +26,11 @@ switch flag_symbolic_value
         out.n_fwd = [n_fwd1;n_fwd2];
         out.eff = [n_bwd;n_fwd];
         
-    case 'value-light'
+    case 'value'
         out.L = [0.4; 0.4];
         out.m = [2; 2];
-        out.I = [0.4^2/12; 0.4^2/12].*out.m;
-        
-    case 'value-heavy'
-        out.L = [0.4; 0.4];
-        out.m = [2; 2];
-        out.I = [0.4^2/12; 0.4^2/12].*out.m;
+        out.I = [1/2; 1/12] .* out.L.^2 .* out.m;
+   
         
     otherwise 
         disp('Unknown method.')

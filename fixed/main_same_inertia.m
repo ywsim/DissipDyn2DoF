@@ -24,7 +24,7 @@ I = params_value.I;
 % limx = [ -90 0 ];
 
 % reflected inertia 
-alpha_inertia_scaler = 4;
+alpha_inertia_scaler = 1;
 const_reflected_inertia = alpha_inertia_scaler *1/3* m(1) * L(1)^2;
 N_ = [3,12,50,100];
 Irot_ = const_reflected_inertia ./ (N_.^2);
@@ -32,7 +32,7 @@ sz_N = length(N_);
 gear_ = [Irot_; Irot_; N_; N_];          
 
 % pose
-sz_q = 7;
+sz_q = 5;
 q1_ = linspace(-0.2, -pi/2+0.2, sz_q);
 q2_ = -pi - 2*q1_;
 % q1_sample = -pi/2.5;
